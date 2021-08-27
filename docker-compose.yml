@@ -7,3 +7,9 @@ services:
     volumes:
       - .:/app
     command: tail -f /dev/null
+  db:
+    image: postgres:13.4
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
