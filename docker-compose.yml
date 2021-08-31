@@ -1,4 +1,9 @@
 version: '3'
+
+# 各serviceから参照できる名前付きvolumeを定義
+volumes:
+  db-data:
+
 services:
   app:
     build:
@@ -11,6 +16,8 @@ services:
     command: tail -f /dev/null
   db:
     image: postgres:13.4
+    volumes:
+      - "db-data:/var/lib/postgresql/data"
     ports:
       - "5432:5432"
     environment:
